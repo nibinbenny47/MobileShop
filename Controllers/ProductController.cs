@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.IO;
 using MobileShop.Models;
 using System.Net;
+using System.Data.Entity;
 
 namespace MobileShop.Controllers
 {
@@ -72,6 +73,22 @@ namespace MobileShop.Controllers
                 return HttpNotFound();
             }
             //----dropdown company names---------
+            ViewBag.company_Id = new SelectList(db.tbl_Company, "company_Id", "company_Name", tbl_Product.company_Id);
+            return View(tbl_Product);
+        }
+        [HttpPost]
+        public ActionResult Edit(HttpPostedFileBase file,[Bind(Include = "product_Id,product_Name,product_Price,company_Id,product_Description,product_Image")] tbl_Product tbl_Product)
+        {
+            if (ModelState.IsValid)
+            {
+                string filename = Path.GetFileName(file.FileName);
+                tbl_Product.product_Image = filename;
+                string path = Path.Combine(Server.MapPath("~/Photos"), filename);
+                file.SaveAs(path);
+                db.Entry(tbl_Product).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
             ViewBag.company_Id = new SelectList(db.tbl_Company, "company_Id", "company_Name", tbl_Product.company_Id);
             return View(tbl_Product);
         }
