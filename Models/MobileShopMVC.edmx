@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="db_MobileShopMVCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="db_MobileShopMVCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tbl_Admin">
           <Key>
             <PropertyRef Name="admin_Id" />
@@ -39,6 +39,7 @@
           <Property Name="product_Price" Type="nvarchar" MaxLength="50" />
           <Property Name="company_Id" Type="int" />
           <Property Name="product_Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="product_Image" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tbl_User">
           <Key>
@@ -88,6 +89,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbl_Product_tbl_Product">
+          <End Role="tbl_Product" Type="Self.tbl_Product" Multiplicity="1" />
+          <End Role="tbl_Product1" Type="Self.tbl_Product" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Product">
+              <PropertyRef Name="product_Id" />
+            </Principal>
+            <Dependent Role="tbl_Product1">
+              <PropertyRef Name="product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="db_MobileShopMVCModelStoreContainer">
           <EntitySet Name="tbl_Admin" EntityType="Self.tbl_Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Booking" EntityType="Self.tbl_Booking" Schema="dbo" store:Type="Tables" />
@@ -106,9 +119,12 @@
             <End Role="tbl_Company" EntitySet="tbl_Company" />
             <End Role="tbl_Product" EntitySet="tbl_Product" />
           </AssociationSet>
+          <AssociationSet Name="FK_tbl_Product_tbl_Product" Association="Self.FK_tbl_Product_tbl_Product">
+            <End Role="tbl_Product" EntitySet="tbl_Product" />
+            <End Role="tbl_Product1" EntitySet="tbl_Product" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="db_MobileShopMVCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -151,6 +167,9 @@
           <Property Name="product_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbl_Booking" Relationship="Self.FK_tbl_Booking_tbl_Product" FromRole="tbl_Product" ToRole="tbl_Booking" />
           <NavigationProperty Name="tbl_Company" Relationship="Self.FK_tbl_Product_tbl_Company" FromRole="tbl_Product" ToRole="tbl_Company" />
+          <Property Name="product_Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Product1" Relationship="db_MobileShopMVCModel.FK_tbl_Product_tbl_Product" FromRole="tbl_Product" ToRole="tbl_Product1" />
+          <NavigationProperty Name="tbl_Product2" Relationship="db_MobileShopMVCModel.FK_tbl_Product_tbl_Product" FromRole="tbl_Product1" ToRole="tbl_Product" />
         </EntityType>
         <EntityType Name="tbl_User">
           <Key>
@@ -219,7 +238,23 @@
             <End Role="tbl_Company" EntitySet="tbl_Company" />
             <End Role="tbl_Product" EntitySet="tbl_Product" />
           </AssociationSet>
+          <AssociationSet Name="FK_tbl_Product_tbl_Product" Association="db_MobileShopMVCModel.FK_tbl_Product_tbl_Product">
+            <End Role="tbl_Product" EntitySet="tbl_Product" />
+            <End Role="tbl_Product1" EntitySet="tbl_Product" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_tbl_Product_tbl_Product">
+          <End Type="db_MobileShopMVCModel.tbl_Product" Role="tbl_Product" Multiplicity="1" />
+          <End Type="db_MobileShopMVCModel.tbl_Product" Role="tbl_Product1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Product">
+              <PropertyRef Name="product_Id" />
+            </Principal>
+            <Dependent Role="tbl_Product1">
+              <PropertyRef Name="product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -257,6 +292,7 @@
           <EntitySetMapping Name="tbl_Product">
             <EntityTypeMapping TypeName="db_MobileShopMVCModel.tbl_Product">
               <MappingFragment StoreEntitySet="tbl_Product">
+                <ScalarProperty Name="product_Image" ColumnName="product_Image" />
                 <ScalarProperty Name="product_Id" ColumnName="product_Id" />
                 <ScalarProperty Name="product_Name" ColumnName="product_Name" />
                 <ScalarProperty Name="product_Price" ColumnName="product_Price" />

@@ -1,0 +1,74 @@
+﻿@model MobileShop.Models.tbl_Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.product_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Company.company_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Company.company_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Product1.product_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Product1.product_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Product2.product_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Product2.product_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.product_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

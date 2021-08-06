@@ -129,7 +129,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\tbl_CompanyController.cs" />
+    <Compile Include="Controllers\tbl_ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -223,9 +225,18 @@
     <Content Include="Views\tbl_Company\Details.cshtml" />
     <Content Include="Views\tbl_Company\Edit.cshtml" />
     <Content Include="Views\tbl_Company\Index.cshtml" />
+    <Content Include="Views\tbl_Product\Create.cshtml" />
+    <Content Include="Views\tbl_Product\Delete.cshtml" />
+    <Content Include="Views\tbl_Product\Details.cshtml" />
+    <Content Include="Views\tbl_Product\Edit.cshtml" />
+    <Content Include="Views\tbl_Product\Index.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Photos\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

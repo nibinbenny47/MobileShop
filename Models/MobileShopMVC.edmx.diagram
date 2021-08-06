@@ -13,6 +13,7 @@
         <AssociationConnector Association="db_MobileShopMVCModel.FK_tbl_Booking_tbl_Product" ManuallyRouted="false" />
         <AssociationConnector Association="db_MobileShopMVCModel.FK_tbl_Booking_tbl_User" ManuallyRouted="false" />
         <AssociationConnector Association="db_MobileShopMVCModel.FK_tbl_Product_tbl_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="db_MobileShopMVCModel.FK_tbl_Product_tbl_Product" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
