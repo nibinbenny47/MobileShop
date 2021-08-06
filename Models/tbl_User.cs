@@ -23,6 +23,7 @@ namespace MobileShop.Models
         public int user_Id { get; set; }
         public string user_Name { get; set; }
         public string user_Gender { get; set; }
+
         public string user_Phone { get; set; }
         public string user_Email { get; set; }
         public string user_Username { get; set; }
