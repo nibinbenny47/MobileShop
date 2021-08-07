@@ -4,20 +4,20 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="db_MobileShopMVCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="db_MobileShopMVCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012">
         <EntityType Name="tbl_Admin">
           <Key>
             <PropertyRef Name="admin_Id" />
           </Key>
-          <Property Name="admin_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="admin_Username" Type="nvarchar" MaxLength="50" />
-          <Property Name="admin_Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="admin_Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="admin_Username" MaxLength="50" Type="nvarchar" />
+          <Property Name="admin_Password" MaxLength="50" Type="nvarchar" />
         </EntityType>
         <EntityType Name="tbl_Booking">
           <Key>
             <PropertyRef Name="booking_Id" />
           </Key>
-          <Property Name="booking_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="booking_Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
           <Property Name="product_Id" Type="int" />
           <Property Name="booking_Quantity" Type="int" />
           <Property Name="booking_Total" Type="int" />
@@ -27,35 +27,35 @@
           <Key>
             <PropertyRef Name="company_Id" />
           </Key>
-          <Property Name="company_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="company_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="company_Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="company_Name" MaxLength="50" Type="nvarchar" />
         </EntityType>
         <EntityType Name="tbl_Product">
           <Key>
             <PropertyRef Name="product_Id" />
           </Key>
-          <Property Name="product_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="product_Name" Type="nvarchar" MaxLength="50" />
-          <Property Name="product_Price" Type="nvarchar" MaxLength="50" />
+          <Property Name="product_Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="product_Name" MaxLength="50" Type="nvarchar" />
+          <Property Name="product_Price" MaxLength="50" Type="nvarchar" />
           <Property Name="company_Id" Type="int" />
-          <Property Name="product_Description" Type="nvarchar" MaxLength="50" />
-          <Property Name="product_Image" Type="nvarchar" MaxLength="50" />
+          <Property Name="product_Description" MaxLength="50" Type="nvarchar" />
+          <Property Name="product_Image" MaxLength="50" Type="nvarchar" />
         </EntityType>
         <EntityType Name="tbl_User">
           <Key>
             <PropertyRef Name="user_Id" />
           </Key>
-          <Property Name="user_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="user_Name" Type="nvarchar" MaxLength="50" />
-          <Property Name="user_Gender" Type="nvarchar" MaxLength="50" />
-          <Property Name="user_Phone" Type="nvarchar" MaxLength="50" />
-          <Property Name="user_Email" Type="nvarchar" MaxLength="50" />
-          <Property Name="user_Username" Type="nvarchar" MaxLength="50" />
-          <Property Name="user_Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="user_Name" MaxLength="50" Type="nvarchar" />
+          <Property Name="user_Gender" MaxLength="50" Type="nvarchar" />
+          <Property Name="user_Phone" MaxLength="50" Type="nvarchar" />
+          <Property Name="user_Email" MaxLength="50" Type="nvarchar" />
+          <Property Name="user_Username" MaxLength="50" Type="nvarchar" />
+          <Property Name="user_Password" MaxLength="50" Type="nvarchar" />
         </EntityType>
         <Association Name="FK_tbl_Booking_tbl_Product">
-          <End Role="tbl_Product" Type="Self.tbl_Product" Multiplicity="0..1" />
-          <End Role="tbl_Booking" Type="Self.tbl_Booking" Multiplicity="*" />
+          <End Type="Self.tbl_Product" Multiplicity="0..1" Role="tbl_Product" />
+          <End Type="Self.tbl_Booking" Multiplicity="*" Role="tbl_Booking" />
           <ReferentialConstraint>
             <Principal Role="tbl_Product">
               <PropertyRef Name="product_Id" />
@@ -66,8 +66,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tbl_Booking_tbl_User">
-          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
-          <End Role="tbl_Booking" Type="Self.tbl_Booking" Multiplicity="*" />
+          <End Type="Self.tbl_User" Multiplicity="0..1" Role="tbl_User" />
+          <End Type="Self.tbl_Booking" Multiplicity="*" Role="tbl_Booking" />
           <ReferentialConstraint>
             <Principal Role="tbl_User">
               <PropertyRef Name="user_Id" />
@@ -78,8 +78,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tbl_Product_tbl_Company">
-          <End Role="tbl_Company" Type="Self.tbl_Company" Multiplicity="0..1" />
-          <End Role="tbl_Product" Type="Self.tbl_Product" Multiplicity="*" />
+          <End Type="Self.tbl_Company" Multiplicity="0..1" Role="tbl_Company" />
+          <End Type="Self.tbl_Product" Multiplicity="*" Role="tbl_Product" />
           <ReferentialConstraint>
             <Principal Role="tbl_Company">
               <PropertyRef Name="company_Id" />
@@ -90,8 +90,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tbl_Product_tbl_Product">
-          <End Role="tbl_Product" Type="Self.tbl_Product" Multiplicity="1" />
-          <End Role="tbl_Product1" Type="Self.tbl_Product" Multiplicity="0..1" />
+          <End Type="Self.tbl_Product" Multiplicity="1" Role="tbl_Product" />
+          <End Type="Self.tbl_Product" Multiplicity="0..1" Role="tbl_Product1" />
           <ReferentialConstraint>
             <Principal Role="tbl_Product">
               <PropertyRef Name="product_Id" />
@@ -108,20 +108,20 @@
           <EntitySet Name="tbl_Product" EntityType="Self.tbl_Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_User" EntityType="Self.tbl_User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_tbl_Booking_tbl_Product" Association="Self.FK_tbl_Booking_tbl_Product">
-            <End Role="tbl_Product" EntitySet="tbl_Product" />
-            <End Role="tbl_Booking" EntitySet="tbl_Booking" />
+            <End EntitySet="tbl_Product" Role="tbl_Product" />
+            <End EntitySet="tbl_Booking" Role="tbl_Booking" />
           </AssociationSet>
           <AssociationSet Name="FK_tbl_Booking_tbl_User" Association="Self.FK_tbl_Booking_tbl_User">
-            <End Role="tbl_User" EntitySet="tbl_User" />
-            <End Role="tbl_Booking" EntitySet="tbl_Booking" />
+            <End EntitySet="tbl_User" Role="tbl_User" />
+            <End EntitySet="tbl_Booking" Role="tbl_Booking" />
           </AssociationSet>
           <AssociationSet Name="FK_tbl_Product_tbl_Company" Association="Self.FK_tbl_Product_tbl_Company">
-            <End Role="tbl_Company" EntitySet="tbl_Company" />
-            <End Role="tbl_Product" EntitySet="tbl_Product" />
+            <End EntitySet="tbl_Company" Role="tbl_Company" />
+            <End EntitySet="tbl_Product" Role="tbl_Product" />
           </AssociationSet>
           <AssociationSet Name="FK_tbl_Product_tbl_Product" Association="Self.FK_tbl_Product_tbl_Product">
-            <End Role="tbl_Product" EntitySet="tbl_Product" />
-            <End Role="tbl_Product1" EntitySet="tbl_Product" />
+            <End EntitySet="tbl_Product" Role="tbl_Product" />
+            <End EntitySet="tbl_Product" Role="tbl_Product1" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>

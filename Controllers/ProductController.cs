@@ -10,6 +10,7 @@ using System.Data.Entity;
 
 namespace MobileShop.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         private MobileShopDbEntities db = new MobileShopDbEntities();
@@ -20,6 +21,7 @@ namespace MobileShop.Controllers
 
             return View(result);
         }
+        [Authorize(Roles ="admin")]
         public ActionResult Create()
         {
             ViewBag.company_Id = new SelectList(db.tbl_Company, "company_Id", "company_Name");

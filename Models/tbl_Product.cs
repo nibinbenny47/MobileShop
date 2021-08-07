@@ -11,9 +11,7 @@ namespace MobileShop.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.Web;
-    using System.Web.Mvc;
-
+    
     public partial class tbl_Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,13 +25,8 @@ namespace MobileShop.Models
         public string product_Price { get; set; }
         public Nullable<int> company_Id { get; set; }
         public string product_Description { get; set; }
-        public HttpPostedFileBase imageFile { get; set; }
-
         public string product_Image { get; set; }
-           
-       
-
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_Booking> tbl_Booking { get; set; }
         public virtual tbl_Company tbl_Company { get; set; }
