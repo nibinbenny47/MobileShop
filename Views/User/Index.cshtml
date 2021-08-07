@@ -1,0 +1,26 @@
+﻿@model MobileShop.Models.tbl_Product
+
+
+@{
+    Layout = "~/Views/Shared/_UserPage.cshtml";
+}
+
+
+@Ajax.ActionLink("Redmi", "Redmi", new AjaxOptions()
+{
+    UpdateTargetId = "ProductList",
+    InsertionMode = InsertionMode.Replace
+})
+@Ajax.ActionLink("Samsung", "Samsung", new AjaxOptions()
+{
+    UpdateTargetId = "ProductList",
+    InsertionMode = InsertionMode.Replace
+})
+@Ajax.ActionLink("Oppo", "Oppo", new AjaxOptions()
+{
+    UpdateTargetId = "ProductList",
+    InsertionMode = InsertionMode.Replace
+})
+<div id="ProductList">
+
+</div>

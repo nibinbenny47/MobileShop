@@ -1,0 +1,92 @@
+﻿@model IEnumerable<MobileShop.Models.tbl_Product>
+
+
+
+
+
+
+<table class="table">
+    @*<tr>
+            <th>
+                @Html.DisplayNameFor(model => model.product_Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.product_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.product_Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.company_Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.product_Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.product_Image)
+            </th>
+            <th></th>
+        </tr>*@
+
+    @foreach (var item in Model)
+    {
+
+        <div class="row" style="border:solid  1px">
+            <div class="col-lg-2">
+              
+                <img src="~/Photos/@Html.DisplayFor(modelItem=>item.product_Image)" width="100" height="100">
+                <br />
+              </div>
+            <div class="col-lg-4">
+                @Html.DisplayFor(modelItem => item.product_Name)
+                <br />
+             
+                @Html.DisplayFor(modelItem => item.product_Price)
+                <br />
+
+               
+                @Html.DisplayFor(modelItem => item.product_Description)
+                <br />
+
+
+
+            </div>
+            <div class="col-lg-6">
+                @Html.ActionLink("Buy Now","Buy")
+            </div>
+        </div>
+
+        @*<tr>
+            <td>
+                @Html.DisplayNameFor(model => model.product_Id)
+                @Html.DisplayFor(modelItem => item.product_Id)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.product_Name)
+                @Html.DisplayFor(modelItem => item.product_Name)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.product_Price)
+                @Html.DisplayFor(modelItem => item.product_Price)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.company_Id)
+                @Html.DisplayFor(modelItem => item.company_Id)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.product_Description)
+                @Html.DisplayFor(modelItem => item.product_Description)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.product_Image)
+                @Html.DisplayFor(modelItem => item.product_Image)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>*@
+    }
+
+</table>

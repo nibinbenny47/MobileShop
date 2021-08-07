@@ -18,6 +18,7 @@ namespace MobileShop.Controllers
 
             return View();
         }
+     
         //-----login-------
         public ActionResult Login()
         {
@@ -37,7 +38,7 @@ namespace MobileShop.Controllers
                     FormsAuthentication.SetAuthCookie(user.user_Username, false);
                     Session["uname"] = user.user_Username.ToString();
                     
-                    return RedirectToAction("Index","Product");
+                    return RedirectToAction("Index","Account");
                 }
             }
             ModelState.AddModelError("", "Invalid username and password");
