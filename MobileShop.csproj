@@ -166,6 +166,9 @@
     <Compile Include="Models\tbl_User.cs">
       <DependentUpon>MobileShopMVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbl_userRole.cs">
+      <DependentUpon>MobileShopMVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebRoleProvider.cs" />
   </ItemGroup>

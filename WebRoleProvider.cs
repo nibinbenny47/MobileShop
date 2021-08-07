@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MobileShop.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -37,12 +38,20 @@ namespace MobileShop
 
         public override string[] GetRolesForUser(string username)
         {
-           
+            using (var db = new MobileShopDbEntities())
+            {
+                var result = (from user in db.tbl_User
+                              join role in db.tbl_userRole on user.user_Id equals role.user_Id
+                              where user.user_Username == username
+                              select role.user_Role).ToArray();
+                return result;
+            }
             throw new NotImplementedException();
         }
 
         public override string[] GetUsersInRole(string roleName)
         {
+           
             throw new NotImplementedException();
         }
 

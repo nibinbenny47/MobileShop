@@ -28,15 +28,19 @@ namespace MobileShop.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = db.tbl_User.Where(x => x.user_Username.Equals(user.user_Username) && x.user_Password.Equals(user.user_Password)).FirstOrDefault();
+               
+                var result = db.tbl_User. Where(x => x.user_Username.Equals(user.user_Username) && x.user_Password.Equals(user.user_Password)).FirstOrDefault();
                 if (result != null)
                 {
-                    Session["uid"] = user.user_Id.ToString();
-                    Session["uname"] = user.user_Name.ToString();
+                   
+
+                    FormsAuthentication.SetAuthCookie(user.user_Username, false);
+                    Session["uname"] = user.user_Username.ToString();
                     
                     return RedirectToAction("Index","Product");
                 }
             }
+            ModelState.AddModelError("", "Invalid username and password");
             return View(user);
         }
         //-----user registration----
@@ -50,6 +54,12 @@ namespace MobileShop.Controllers
             db.tbl_User.Add(user);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        //-----logout------
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login");
         }
     }
 }

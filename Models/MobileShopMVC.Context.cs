@@ -30,5 +30,6 @@ namespace MobileShop.Models
         public virtual DbSet<tbl_Company> tbl_Company { get; set; }
         public virtual DbSet<tbl_Product> tbl_Product { get; set; }
         public virtual DbSet<tbl_User> tbl_User { get; set; }
+        public virtual DbSet<tbl_userRole> tbl_userRole { get; set; }
     }
 }

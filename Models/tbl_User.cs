@@ -18,6 +18,7 @@ namespace MobileShop.Models
         public tbl_User()
         {
             this.tbl_Booking = new HashSet<tbl_Booking>();
+            this.tbl_userRole = new HashSet<tbl_userRole>();
         }
     
         public int user_Id { get; set; }
@@ -30,5 +31,7 @@ namespace MobileShop.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_Booking> tbl_Booking { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_userRole> tbl_userRole { get; set; }
     }
 }
