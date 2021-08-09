@@ -12,13 +12,13 @@ namespace MobileShop.Controllers
     {
         private MobileShopDbEntities db = new MobileShopDbEntities();
         // GET: Account
-      
+
         public ActionResult Index()
         {
 
             return View();
         }
-     
+
         //-----login-------
         public ActionResult Login()
         {
@@ -29,16 +29,17 @@ namespace MobileShop.Controllers
         {
             if (ModelState.IsValid)
             {
-               
-                var result = db.tbl_User. Where(x => x.user_Username.Equals(user.user_Username) && x.user_Password.Equals(user.user_Password)).FirstOrDefault();
+
+                var result = db.tbl_User.Where(x => x.user_Username.Equals(user.user_Username) && x.user_Password.Equals(user.user_Password)).FirstOrDefault();
                 if (result != null)
                 {
-                   
+
 
                     FormsAuthentication.SetAuthCookie(user.user_Username, false);
-                    Session["uname"] = user.user_Username.ToString();
-                    
-                    return RedirectToAction("Index","Account");
+                    Session["uname"] = user.user_Username.ToString(); 
+                    Session["uid"] = result.user_Id.ToString();
+
+                    return RedirectToAction("Index", "Account");
                 }
             }
             ModelState.AddModelError("", "Invalid username and password");
