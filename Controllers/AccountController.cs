@@ -36,7 +36,9 @@ namespace MobileShop.Controllers
 
 
                     FormsAuthentication.SetAuthCookie(user.user_Username, false);
-                    Session["uname"] = user.user_Username.ToString(); 
+                    Session["uname"] = user.user_Username.ToString();
+
+
                     Session["uid"] = result.user_Id.ToString();
 
                     return RedirectToAction("Index", "Account");

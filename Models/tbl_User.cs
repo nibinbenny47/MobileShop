@@ -28,7 +28,8 @@ namespace MobileShop.Models
         public string user_Email { get; set; }
         public string user_Username { get; set; }
         public string user_Password { get; set; }
-    
+        public static System.Web.HttpContext Current { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_Booking> tbl_Booking { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

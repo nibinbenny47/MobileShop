@@ -248,6 +248,8 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Shared\_ProductCard.cshtml" />
     <Content Include="Views\Shared\_UserPage.cshtml" />
+    <Content Include="Views\User\Buy.cshtml" />
+    <Content Include="Views\User\ViewProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
